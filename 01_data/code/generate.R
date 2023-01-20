@@ -20,8 +20,8 @@ main <- function(){
 generate_physical_ability <- function(number,mean,variance){
   sd <- sqrt(variance)
   output <- exp(rnorm(number,
-                  mean,
-                  sd))
+                      mean,
+                      sd))
   return(output)
 }
 
@@ -50,7 +50,7 @@ generate_income <- function(input){
                    mean = 0,
                    sd = 1)
   output <- 0.1*input-0.3*input^3+0.5*input^5-0.7*input^7+epsilon
-
+  
   return(output)
 }
 
