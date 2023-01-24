@@ -1,7 +1,6 @@
-#library(magrittr)
-#library(ggplot2)
-
 main <- function(){
+  #library(magrittr)
+  #library(ggplot2)
   data <- readRDS(file = "01_data/data/data.obj")
   
   histgram_m <- plot_hist_m(data)
