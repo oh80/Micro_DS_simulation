@@ -48,8 +48,8 @@ generate_score <- function(input){
 generate_income <- function(input){
   epsilon <- rnorm(length(input),
                    mean = 0,
-                   sd = 1)
-  output <- 0.1*input-0.3*input^3+0.5*input^5-0.7*input^7+epsilon
+                   sd = 200)
+  output <- 0.1*input-0.3*(input/500)^3+0.5*(input/500)^5-0.7*(input/500)^7+epsilon
   
   return(output)
 }
