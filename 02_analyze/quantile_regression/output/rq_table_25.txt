@@ -1,0 +1,10 @@
+
+\begin{tabular}{l|r|r}
+\hline
+  & coefficients & lower bd\\
+\hline
+(Intercept) & -5.606 & -7.722\\
+\hline
+physical\_ability & -0.104 & -0.117\\
+\hline
+\end{tabular}

@@ -1,0 +1,10 @@
+
+\begin{tabular}{l|r|r}
+\hline
+  & Estimate & Std. Error\\
+\hline
+(Intercept) & -0.474 & 0.986\\
+\hline
+physical\_ability & -0.100 & 0.010\\
+\hline
+\end{tabular}
