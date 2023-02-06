@@ -11,18 +11,22 @@ main <- function(){
     make_terms(terms = 20) %>% 
     generate_sample(times = 5)
   
-  lambda <- get_best_lambda(sampled_data)
+  lambda <- sampled_data %>% get_best_lambda()
   
+  Lasso_model <- sampled_data %>% Lasso_reg(param = lambda)
   
+  my_plot <- sampled_data %>% plot_scatter()
   
-  return(lambda)
+  coef_table <- Lasso_model %>% make_coef_table()
+  
+  save_my_plot(my_plot)
+  save_my_table(coef_table)
 }
 
 
 select_col <- function(input,terms){
   output <- tidyr::tibble(z=input$income,
                           x1 = input$physical_ability)
-
   return(output)
 }
 
@@ -67,5 +71,63 @@ get_best_lambda <- function(input){
 }
 
 
-l <- main()
+Lasso_reg <- function(input,param){
+  output <- list()
+  for (i in 1:length(param)) {
+    x = input[[i]] %>% dplyr::select(-z) %>% as.matrix()
+    y = input[[i]] %>% dplyr::select(z)%>% unlist()
+    output[[i]] <- glmnet::glmnet(x = x, y = y,
+                                family = "gaussian", lambda = param[i], alpha = 1)
+  }
+  return(output)
+}
 
+
+plot_scatter <- function(input){
+  output <- list()
+  for (i in 1:length(input)) {
+    output[[i]] <- ggplot2::ggplot(data=input[[i]],
+                                   mapping = ggplot2::aes(x=x1,y=z))+
+      ggplot2::geom_point()+
+      ggplot2::theme_minimal()+
+      ggplot2::labs(title = paste0("sample",i,"  ","scatter"))
+  }
+  return(output)
+}
+
+
+make_coef_table <- function(input){
+  output <- list()
+  for (i in 1:length(input)){
+    output[[i]] <- kableExtra::kable(as.array(input[[i]]$beta),
+                                     digits = 3,
+                                     col.names = "beta",
+                                     format = "latex")
+  }
+  return(output)
+}
+
+
+save_my_plot <- function(input){
+  my_path <- "02_analyze/Lasso/output"
+  
+  for (i in 1:length(input)) {
+    file_name = paste0("/scatter_sample",i)
+    ggplot2::ggsave(plot = input[[i]],
+                    filename = paste0(file_name,".pdf"),
+                    path = my_path)
+  }
+}
+
+
+save_my_table <- function(input){
+  my_path <- "02_analyze/Lasso/output"
+  
+  for (i in 1:length(input)){
+    file_name = paste0("/Lasso_coef",i,".txt")
+    path <- paste0(my_path,file_name)
+    writeLines(input[[i]],path)
+  }
+}
+
+main()

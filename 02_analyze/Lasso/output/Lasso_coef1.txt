@@ -1,0 +1,46 @@
+
+\begin{tabular}{l|r}
+\hline
+  & beta\\
+\hline
+x1 & -0.026\\
+\hline
+x2 & 0.000\\
+\hline
+x3 & 0.000\\
+\hline
+x4 & 0.000\\
+\hline
+x5 & 0.000\\
+\hline
+x6 & 0.000\\
+\hline
+x7 & 0.000\\
+\hline
+x8 & 0.000\\
+\hline
+x9 & 0.000\\
+\hline
+x10 & 0.000\\
+\hline
+x11 & 0.000\\
+\hline
+x12 & 0.000\\
+\hline
+x13 & 0.000\\
+\hline
+x14 & 0.000\\
+\hline
+x15 & 0.000\\
+\hline
+x16 & 0.000\\
+\hline
+x17 & 0.000\\
+\hline
+x18 & 0.000\\
+\hline
+x19 & 0.000\\
+\hline
+x20 & 0.000\\
+\hline
+\end{tabular}
