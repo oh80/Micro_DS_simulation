@@ -1,0 +1,8 @@
+
+\begin{tabular}{r|r}
+\hline
+linear model & probit model\\
+\hline
+0.0022 & 0.00398\\
+\hline
+\end{tabular}
