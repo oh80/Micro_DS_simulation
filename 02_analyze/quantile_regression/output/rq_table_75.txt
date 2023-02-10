@@ -1,10 +1,10 @@
 
-\begin{tabular}{l|r|r}
+\begin{tabular}{l|r|r|r}
 \hline
-  & coefficients & lower bd\\
+  & coefficients & lower bd & upper bd\\
 \hline
-(Intercept) & 4.285 & 1.848\\
+(Intercept) & 4.285 & 1.848 & 7.632\\
 \hline
-physical\_ability & -0.082 & -0.107\\
+physical\_ability & -0.082 & -0.107 & 0.041\\
 \hline
 \end{tabular}

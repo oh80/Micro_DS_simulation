@@ -1,4 +1,4 @@
-#library(magrittr)
+library(magrittr)
 #install.packages('quantreg')
 #library(quantreg)
 
@@ -7,11 +7,9 @@ main <- function(){
   
   linear_reg_table <- data %>% linear_reg() %>% make_table_lm() 
   
-  quantile_reg_25_table <- data %>% quantile_reg(tau = 0.25) %>% make_table_lm()
-  
-  quantile_reg_50_table <- data %>% quantile_reg(tau = 0.5) %>% make_table_lm()
-  
-  quantile_reg_75_table <- data %>% quantile_reg(tau = 0.75) %>% make_table_lm()
+  quantile_reg_25_table <- data %>% quantile_reg(tau = 0.25) %>% make_table_qm()
+  quantile_reg_50_table <- data %>% quantile_reg(tau = 0.5) %>% make_table_qm()
+  quantile_reg_75_table <- data %>% quantile_reg(tau = 0.75) %>% make_table_qm()
   
   my_plot <- plot_lm_and_rq(data)
   
@@ -37,6 +35,14 @@ make_table_lm <- function(input){
                               format = "latex",
                               digits = 3)
   return(output)
+}
+
+
+make_table_qm <- function(input){
+  summary <- summary(input)
+  output <- kableExtra::kable(summary$coefficients,
+                              format = "latex",
+                              digits = 3)
 }
 
 
@@ -101,4 +107,4 @@ save_my_plot <- function(input){
 }
 
 
-main()
+ main()
