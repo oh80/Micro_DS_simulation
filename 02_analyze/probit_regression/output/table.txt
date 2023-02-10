@@ -3,6 +3,6 @@
 \hline
 linear model & probit model\\
 \hline
-0.0022 & 0.00347\\
+0.0022 & 0.00246\\
 \hline
 \end{tabular}

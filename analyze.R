@@ -1,4 +1,4 @@
-#library(magrittr)
+library(magrittr)
 
 
 main <-function(){
@@ -31,9 +31,10 @@ linear_reg <- function(input){
 get_values <- function(input_data,input_model1,input_model2){
   linear_maginal_effect <- input_model2$coefficients[2]
   
-  probit_hidden_param <- input_model1$coefficients[2]
-  probit_marginal <- dnorm(probit_hidden_param*input_data$physical_ability,
-                   mean = 0, sd = 1)*probit_hidden_param 
+  probit_hidden_param <- c(input_model1$coefficients[1],input_model1$coefficients[2])
+  probit_marginal <- dnorm(probit_hidden_param[1]
+                           +probit_hidden_param[2]*input_data$physical_ability,
+                   mean = 0, sd = 1)*probit_hidden_param[2]
   probit_maginal_mean <- mean(probit_marginal)
   
   marginal_effects <- c(linear_maginal_effect,probit_maginal_mean)
